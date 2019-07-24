@@ -16,6 +16,7 @@ import { MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
   MatCardModule, 
+  MatIconModule,
   MatSelectModule } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -44,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatCardModule, 
     MatSelectModule,
+    MatIconModule,
     FlexLayoutModule,
     FormsModule, 
     ReactiveFormsModule,

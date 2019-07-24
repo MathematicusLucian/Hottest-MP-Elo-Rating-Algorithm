@@ -1,8 +1,33 @@
 .mat-toolbar-row {
     text-align: left;
 
-    h1 {
+    #app-title {
         font-size: 1em;
         font-weight: bold;
     }
+
+    .toolbar-spacer {
+        flex: 1 1 auto;
+      }
+
+    .toolbar-fill-remaining-space {
+        /* This fills the remaining space, by using flexbox. 
+            Every toolbar row uses a flexbox row layout. */
+        flex: 1 1 auto;
+        text-align: right;
+
+        a {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #e91e63;
+            text-decoration: none;
+            padding: 0 5px;
+            text-align: center;
+        
+            .toolbar-icon {
+                padding: 0 1px 0 0;
+            }
+        }
+    }
+    
 }
