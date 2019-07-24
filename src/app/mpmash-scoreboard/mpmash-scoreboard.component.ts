@@ -4,9 +4,9 @@ import { MatTable } from '@angular/material';
 import { DataService } from '../data.service';
 
 export interface dataElement {
+  Image: string;
   Name: string;
   Rating: string;
-  Img: string;
 }  
 
 const ELEMENT_DATA: dataElement[] = [];
@@ -18,6 +18,8 @@ const ELEMENT_DATA: dataElement[] = [];
 })
 export class MpmashScoreboardComponent implements OnInit {
   public scoreboardForm: FormGroup; 
+
+  gender_chosen = 0;
 
   genders = [
     {gender_id: 0, gender: 'Male'},
@@ -39,9 +41,16 @@ export class MpmashScoreboardComponent implements OnInit {
       gender: new FormControl('', [Validators.required])
     });
 
-    //this.dataScoreboard = this.data.fakeDatabase;
-    console.log(this.dataScoreboard);
-    console.log(this.data.fakeDatabase);
+    let dataMPs = this.data.fakeDatabase;
+
+    for (let mp in dataMPs){
+      this.dataScoreboard.push({
+        Image: "<img src='./assets/img/" + dataMPs[mp]["img"] + "'>",
+        Name: dataMPs[mp]["name"],
+        Rating: dataMPs[mp]["rating"]+""
+      }); 
+    } 
+    console.log(this.dataScoreboard); 
   }
 
   public hasError = (controlName: string, errorName: string) =>{
