@@ -10,6 +10,20 @@ import { MpmashScoreboardComponent } from './mpmash-scoreboard/mpmash-scoreboard
 import { BrexitPositionScoreboardComponent } from './brexit-position-scoreboard/brexit-position-scoreboard.component';
 import { MpExpensesScoreboardComponent } from './mp-expenses-scoreboard/mp-expenses-scoreboard.component';
 
+import { MatToolbarModule,
+  MatButtonModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCardModule, 
+  MatSelectModule } from '@angular/material';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +36,18 @@ import { MpExpensesScoreboardComponent } from './mp-expenses-scoreboard/mp-expen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule, 
+    MatSelectModule,
+    FlexLayoutModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
