@@ -28,6 +28,12 @@ export class MpmashComponent implements OnInit {
       "rating": 10
     },
     {
+      "name": "Sajid Javid",
+      "img": "fd8gstg8fa.jpeg",
+      "gender": 0, 
+      "rating": 10
+    }, 
+    {
       "name": "Priti Patel",
       "img": "gf6dg6s.png",
       "gender": 1, 
@@ -46,11 +52,35 @@ export class MpmashComponent implements OnInit {
       "rating": 10
     },
     {
+      "name": "Theresa May",
+      "img": "sfhsdfghk.jpeg",
+      "gender": 1, 
+      "rating": 10
+    }, 
+    {
+      "name": "Luciana Berger",
+      "img": "24wea43.jpeg",
+      "gender": 1, 
+      "rating": 10
+    },
+    {
       "name": "Zac Goldsmith",
       "img": "61sdfds2262756.jpg",
       "gender": 0, 
       "rating": 10
     },
+    {
+      "name": "Diane Abbott",
+      "img": "gsg7ayg9.jpeg",
+      "gender": 1, 
+      "rating": 10
+    }, 
+    {
+      "name": "Elizabeth Truss",
+      "img": "sftdt8.jpeg",
+      "gender": 1, 
+      "rating": 10
+    }, 
     {
       "name": "Gavin Williamson",
       "img": "fsdfs4af.png",
@@ -59,7 +89,7 @@ export class MpmashComponent implements OnInit {
     }
   ];
 
-  gender_chosen = 0;
+  gender_chosen = 1;
   mpChosenGenderData = [];
 
   total_mps = 0; 
