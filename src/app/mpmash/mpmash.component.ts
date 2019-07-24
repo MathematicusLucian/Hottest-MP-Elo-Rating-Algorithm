@@ -99,23 +99,17 @@ export class MpmashComponent implements OnInit {
 
   chooseTwoRandomMPs() { 
     let mpChosenGenderData = this.updateGenderData();
-    let total_applicable_mps = mpChosenGenderData.length;
+    let total_applicable_mps = mpChosenGenderData.length; 
 
-    let random_a = Math.floor((Math.random() * total_applicable_mps) + 1);
-    let random_b = Math.floor((Math.random() * total_applicable_mps) + 1);
+    let random_a = Math.floor((Math.random() * total_applicable_mps));
+    let random_b = Math.floor((Math.random() * total_applicable_mps));
     
     while(random_a == random_b){
-      random_b = Math.floor((Math.random() * total_applicable_mps) + 1);
-    }  
+      random_b = Math.floor((Math.random() * total_applicable_mps));
+    }   
 
-    console.log(random_a + ", " + random_b);
-
-    random_a = mpChosenGenderData[random_a]["id"]; 
-    //fails if 4
-
-    random_b = mpChosenGenderData[random_b]["id"];
-
-    console.log(random_a + ", " + random_b);
+    random_a = mpChosenGenderData[random_a]["id"];  
+    random_b = mpChosenGenderData[random_b]["id"]; 
 
     let twoMps : number[] = [random_a,random_b];
     return twoMps;    
