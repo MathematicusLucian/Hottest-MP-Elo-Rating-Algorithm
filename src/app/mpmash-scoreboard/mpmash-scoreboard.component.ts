@@ -49,12 +49,16 @@ export class MpmashScoreboardComponent implements OnInit {
     let dataMPs = this.data.fakeDatabase;
 
     for (let mp in dataMPs){
-     /* this.dataScoreboard.push({
-        Image: "<img src='./assets/img/" + dataMPs[mp]["img"] + "'>",
+      this.elements.push({
+        Image: dataMPs[mp]["img"],
         Name: dataMPs[mp]["name"],
         Rating: dataMPs[mp]["rating"]+""
-      }); */
-    } 
+      }); 
+    }  
+
+    this.dataScoreboard.data = this.elements;
+
+    console.log(this.elements);
 
     console.log(this.dataScoreboard); 
   }
