@@ -98,8 +98,8 @@ export class DataService {
     this.total_mps = this.fakeDatabase.length;
   }
 
-  chooseTwoRandomMPs() { 
-    let mpChosenGenderData = this.updateGenderData();
+  chooseTwoRandomMPs(gender_chosen) { 
+    let mpChosenGenderData = this.updateGenderData(gender_chosen);
     let total_applicable_mps = mpChosenGenderData.length; 
 
     let random_a = Math.floor((Math.random() * total_applicable_mps));
@@ -119,8 +119,7 @@ export class DataService {
   getMPData(mp) {
     //get mp's data from database 
     mp = mp;
-    let mpData = this.fakeDatabase[mp];
-    //console.log(mpData);
+    let mpData = this.fakeDatabase[mp]; 
     let data = [{
       "id": mp,
       "name": mpData["name"],
@@ -130,19 +129,14 @@ export class DataService {
     return data[0]; 
   }
 
-  updateGenderData() {
+  updateGenderData(gender_chosen) {
     let mpChosenGenderData = [];
-    for (let mp in this.fakeDatabase) {  
-      //console.log(mp);
-      //console.log(this.fakeDatabase[mp].gender);
-      //console.log(this.gender_chosen);
-      if(this.fakeDatabase[mp].gender == this.gender_chosen){
-        let data = this.getMPData(mp);
-        //console.log(data);
+    for (let mp in this.fakeDatabase) {   
+      if(this.fakeDatabase[mp].gender == gender_chosen){
+        let data = this.getMPData(mp); 
         mpChosenGenderData.push(data);
       }
-    }  
-    //console.log(mpChosenGenderData);
+    }   
     return mpChosenGenderData; 
   } 
   

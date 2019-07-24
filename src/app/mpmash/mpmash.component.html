@@ -1,6 +1,12 @@
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-  <button class="gender_select" fxFlex="20%" mat-raised-button (click)="chooseGender(0)" color="primary">Male MPs</button>
-  <button class="gender_select" fxFlex="20%" mat-raised-button (click)="chooseGender(1)" color="primary">Female MPs</button>
+  <button class="gender_select" fxFlex="20%" 
+    mat-raised-button (click)="chooseGender(0)" 
+    [disabled]="gender_chosen==0"
+    color="primary">Male MPs</button>
+  <button class="gender_select" fxFlex="20%" 
+    mat-raised-button (click)="chooseGender(1)" 
+    [disabled]="gender_chosen==1"
+    color="primary">Female MPs</button>
 </div>
 
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
