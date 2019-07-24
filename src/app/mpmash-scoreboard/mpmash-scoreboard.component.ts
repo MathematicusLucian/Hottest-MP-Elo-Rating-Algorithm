@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatTable } from '@angular/material';
+import { MatTableModule, MatTableDataSource, MatTable, MatSort } from '@angular/material';
 import { DataService } from '../data.service';
 
 export interface dataElement {
@@ -29,27 +29,33 @@ export class MpmashScoreboardComponent implements OnInit {
   displayedColumns: string[] = ['Image', 'Name', 'Rating'];
   columnsToDisplay: string[] = this.displayedColumns;
 
-  constructor(private data: DataService) {}
+  dataScoreboard: MatTableDataSource<dataElement> ;
+  elements: dataElement[] = []; 
 
-  dataScoreboard: dataElement[] = ELEMENT_DATA; 
+  constructor(private data: DataService) {
+    this.dataScoreboard = new MatTableDataSource<dataElement>();
+  }
 
-  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
+  @ViewChild(MatTable,{static:true}) table: MatTable<any>; 
 
   ngOnInit() {
     this.scoreboardForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(0), Validators.maxLength(60)]),
       gender: new FormControl('', [Validators.required])
-    });
+    }); 
+
+    console.log(this.dataScoreboard);
 
     let dataMPs = this.data.fakeDatabase;
 
     for (let mp in dataMPs){
-      this.dataScoreboard.push({
+     /* this.dataScoreboard.push({
         Image: "<img src='./assets/img/" + dataMPs[mp]["img"] + "'>",
         Name: dataMPs[mp]["name"],
         Rating: dataMPs[mp]["rating"]+""
-      }); 
+      }); */
     } 
+
     console.log(this.dataScoreboard); 
   }
 

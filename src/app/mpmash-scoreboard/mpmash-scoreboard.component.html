@@ -35,15 +35,27 @@
     </mat-card-header>
     <mat-card-content>  
   
-      <table mat-table [dataSource]="dataScoreboard" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      <mat-table [dataSource]="dataScoreboard" class="mat-elevation-z8"> 
+
+        <ng-container matColumnDef="Image">
+            <div mat-header-cell *matHeaderCellDef>Image</div>
+            <div mat-cell class="image-cell" *matCellDef="let element"><img src="./assets/img/{{ element.Image }}"></div>
         </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-      </table> 
+      
+        <ng-container matColumnDef="Name">
+            <div mat-header-cell *matHeaderCellDef>Name</div>
+            <div mat-cell class="name-cell" *matCellDef="let element">{{ element.Name }}</div>
+        </ng-container>
+      
+        <ng-container matColumnDef="Rating">
+            <div mat-header-cell *matHeaderCellDef>Rating</div>
+            <div mat-cell class="rating-cell" *matCellDef="let element">{{ element.Rating }}</div>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      </mat-table> 
   
     </mat-card-content> 
   </mat-card>

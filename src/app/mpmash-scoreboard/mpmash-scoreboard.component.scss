@@ -1,19 +1,23 @@
-table {
-    width: 100%;
-  } 
-  
-  mat-form-field{
-    width: 300px;
+mat-table {
+  width: 100%;
+
+  div{
+    padding: 10px 16px;
   }
-  
-  mat-card-title{
-    text-align: center;
-  }
-  
-  mat-card-header-text {
-    margin: 0;
-  }
-  
-  form > button { 
-    margin: 0 50px; 
-  }  
+} 
+
+mat-form-field{
+  width: 300px;
+}
+
+mat-card-title{
+  text-align: center;
+}
+
+mat-card-header-text {
+  margin: 0;
+}
+
+form > button { 
+  margin: 0 50px; 
+}  
