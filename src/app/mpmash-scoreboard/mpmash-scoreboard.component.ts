@@ -24,7 +24,7 @@ export class MpmashScoreboardComponent implements OnInit {
     {gender_id: 1, gender: 'Female'}
   ];
 
-  displayedColumns: string[] = ['Image', 'Name', 'Cating'];
+  displayedColumns: string[] = ['Image', 'Name', 'Rating'];
   columnsToDisplay: string[] = this.displayedColumns;
 
   constructor(private data: DataService) {}
@@ -44,12 +44,16 @@ export class MpmashScoreboardComponent implements OnInit {
     console.log(this.data.fakeDatabase);
   }
 
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.scoreboardForm.controls[controlName].hasError(errorName);
+  }
+
   filterScoreboard() { 
 
     if (this.scoreboardForm.valid) {
       
       //filter update
-      
+
       
       this.table.renderRows(); 
     }
