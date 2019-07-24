@@ -12,52 +12,55 @@ export class MpmashComponent implements OnInit {
     {
       "name": "Boris Johnson",
       "img": "fgaagefeg.png",
-      "gender": "M", 
+      "gender": 0, 
       "rating": 10
     },
     {
       "name": "Stella Creasy",
       "img": "sfg68sg86f.png",
-      "gender": "F", 
+      "gender": 1, 
       "rating": 10
     },
     {
       "name": "Penny Mordaunt",
       "img": "fgtsdt7fgd7.png",
-      "gender": "F", 
+      "gender": 1, 
       "rating": 10
     },
     {
       "name": "Priti Patel",
       "img": "gf6dg6s.png",
-      "gender": "F", 
+      "gender": 1, 
       "rating": 10
     },
     {
       "name": "Esther McVey",
       "img": "8dfgfds8fg.png",
-      "gender": "F", 
+      "gender": 1, 
       "rating": 10
     },
     {
       "name": "Jo Johnson",
       "img": "gdf7fgdh.jpg",
-      "gender": "M", 
+      "gender": 0, 
       "rating": 10
     },
     {
       "name": "Zac Goldsmith",
       "img": "61sdfds2262756.jpg",
-      "gender": "M", 
+      "gender": 0, 
       "rating": 10
     },
     {
       "name": "Gavin Williamson",
       "img": "fsdfs4af.png",
-      "gender": "M", 
+      "gender": 0, 
       "rating": 10
     }
   ];
+
+  gender_chosen = 0;
+  mpChosenGenderData = [];
 
   total_mps = 0; 
 
@@ -78,22 +81,51 @@ export class MpmashComponent implements OnInit {
     this.loadNewMPs();
   }
 
+  updateGenderData() {
+    let mpChosenGenderData = [];
+    for (let mp in this.fakeDatabase) {  
+      //console.log(mp);
+      //console.log(this.fakeDatabase[mp].gender);
+      //console.log(this.gender_chosen);
+      if(this.fakeDatabase[mp].gender == this.gender_chosen){
+        let data = this.getMPData(mp);
+        //console.log(data);
+        mpChosenGenderData.push(data);
+      }
+    }  
+    //console.log(mpChosenGenderData);
+    return mpChosenGenderData; 
+  }
+
   chooseTwoRandomMPs() { 
-    let random_a = Math.floor((Math.random() * this.total_mps) + 1);
-    let random_b = Math.floor((Math.random() * this.total_mps) + 1);
+    let mpChosenGenderData = this.updateGenderData();
+    let total_applicable_mps = mpChosenGenderData.length;
+
+    let random_a = Math.floor((Math.random() * total_applicable_mps) + 1);
+    let random_b = Math.floor((Math.random() * total_applicable_mps) + 1);
     
     while(random_a == random_b){
-      random_b = Math.floor((Math.random() * this.total_mps) + 1);
+      random_b = Math.floor((Math.random() * total_applicable_mps) + 1);
     }  
+
+    console.log(random_a + ", " + random_b);
+
+    random_a = mpChosenGenderData[random_a]["id"]; 
+    //fails if 4
+
+    random_b = mpChosenGenderData[random_b]["id"];
+
+    console.log(random_a + ", " + random_b);
 
     let twoMps : number[] = [random_a,random_b];
     return twoMps;    
   }
 
   getMPData(mp) {
-    //get mp's data from database
-    mp = mp - 1;
+    //get mp's data from database 
+    mp = mp;
     let mpData = this.fakeDatabase[mp];
+    //console.log(mpData);
     let data = [{
       "id": mp,
       "name": mpData["name"],
@@ -103,20 +135,28 @@ export class MpmashComponent implements OnInit {
     return data[0]; 
   }
 
+  chooseGender(gender_chosen){
+    this.gender_chosen = gender_chosen;
+    this.loadNewMPs();
+  }
+
   loadNewMPs() {
     let twoMPs = this.chooseTwoRandomMPs(); 
+    //console.log(twoMPs);
 
     this.twoMPsData = [];
 
     for (let mp in twoMPs) { 
-      this.twoMPsData.push(this.getMPData(twoMPs[mp]));
+      let data = this.getMPData(twoMPs[mp]);
+      //console.log(data);
+      this.twoMPsData.push(data);
     }  
 
     //updates DOM on array change
   }
 
   voteForMP(mp_chosen){ 
-    console.log(mp_chosen);
+    //console.log(mp_chosen);
 
     let newRatings = this.calculateRatings(mp_chosen);
 
@@ -127,7 +167,7 @@ export class MpmashComponent implements OnInit {
     this.fakeDatabase[mp_a].rating = newRatings[0];
     this.fakeDatabase[mp_b].rating = newRatings[1];
 
-    console.log(this.fakeDatabase);
+    //console.log(this.fakeDatabase);
 
     //upload two new mps
     this.loadNewMPs();
