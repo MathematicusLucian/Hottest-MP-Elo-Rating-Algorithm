@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { DataService } from '../data.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-mpmash',
@@ -7,88 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mpmash.component.scss']
 })
 export class MpmashComponent implements OnInit {
- 
-  fakeDatabase = [
-    {
-      "name": "Boris Johnson",
-      "img": "fgaagefeg.png",
-      "gender": 0, 
-      "rating": 0
-    },
-    {
-      "name": "Stella Creasy",
-      "img": "sfg68sg86f.png",
-      "gender": 1, 
-      "rating": 0
-    },
-    {
-      "name": "Penny Mordaunt",
-      "img": "fgtsdt7fgd7.png",
-      "gender": 1, 
-      "rating": 0
-    },
-    {
-      "name": "Sajid Javid",
-      "img": "fd8gstg8fa.jpeg",
-      "gender": 0, 
-      "rating": 0
-    }, 
-    {
-      "name": "Priti Patel",
-      "img": "gf6dg6s.png",
-      "gender": 1, 
-      "rating": 0
-    },
-    {
-      "name": "Esther McVey",
-      "img": "8dfgfds8fg.png",
-      "gender": 1, 
-      "rating": 0
-    },
-    {
-      "name": "Jo Johnson",
-      "img": "gdf7fgdh.jpg",
-      "gender": 0, 
-      "rating": 0
-    },
-    {
-      "name": "Theresa May",
-      "img": "sfhsdfghk.jpeg",
-      "gender": 1, 
-      "rating": 0
-    }, 
-    {
-      "name": "Luciana Berger",
-      "img": "24wea43.jpeg",
-      "gender": 1, 
-      "rating": 0
-    },
-    {
-      "name": "Zac Goldsmith",
-      "img": "61sdfds2262756.jpg",
-      "gender": 0, 
-      "rating": 0
-    },
-    {
-      "name": "Diane Abbott",
-      "img": "gsg7ayg9.jpeg",
-      "gender": 1, 
-      "rating": 0
-    }, 
-    {
-      "name": "Elizabeth Truss",
-      "img": "sftdt8.jpeg",
-      "gender": 1, 
-      "rating": 0
-    }, 
-    {
-      "name": "Gavin Williamson",
-      "img": "fsdfs4af.png",
-      "gender": 0, 
-      "rating": 0
-    }
-  ];
-
   gender_chosen = 1;
   mpChosenGenderData = [];
 
@@ -102,61 +20,10 @@ export class MpmashComponent implements OnInit {
   face_b_new_rating = 0;
   k = 24;  
 
-  //constructor(private data: DataService) {}
-  constructor() {}
+  constructor(private data: DataService) {}
 
   ngOnInit(){
-    //get total_mps count from database
-    this.total_mps = this.fakeDatabase.length;
     this.loadNewMPs();
-  }
-
-  updateGenderData() {
-    let mpChosenGenderData = [];
-    for (let mp in this.fakeDatabase) {  
-      //console.log(mp);
-      //console.log(this.fakeDatabase[mp].gender);
-      //console.log(this.gender_chosen);
-      if(this.fakeDatabase[mp].gender == this.gender_chosen){
-        let data = this.getMPData(mp);
-        //console.log(data);
-        mpChosenGenderData.push(data);
-      }
-    }  
-    //console.log(mpChosenGenderData);
-    return mpChosenGenderData; 
-  }
-
-  chooseTwoRandomMPs() { 
-    let mpChosenGenderData = this.updateGenderData();
-    let total_applicable_mps = mpChosenGenderData.length; 
-
-    let random_a = Math.floor((Math.random() * total_applicable_mps));
-    let random_b = Math.floor((Math.random() * total_applicable_mps));
-    
-    while(random_a == random_b){
-      random_b = Math.floor((Math.random() * total_applicable_mps));
-    }   
-
-    random_a = mpChosenGenderData[random_a]["id"];  
-    random_b = mpChosenGenderData[random_b]["id"]; 
-
-    let twoMps : number[] = [random_a,random_b];
-    return twoMps;    
-  }
-
-  getMPData(mp) {
-    //get mp's data from database 
-    mp = mp;
-    let mpData = this.fakeDatabase[mp];
-    //console.log(mpData);
-    let data = [{
-      "id": mp,
-      "name": mpData["name"],
-      "rating": mpData["rating"],
-      "img": mpData["img"] 
-    }]; 
-    return data[0]; 
   }
 
   chooseGender(gender_chosen){
@@ -165,15 +32,15 @@ export class MpmashComponent implements OnInit {
   }
 
   loadNewMPs() {
-    let twoMPs = this.chooseTwoRandomMPs(); 
+    let twoMPs = this.data.chooseTwoRandomMPs(); 
     //console.log(twoMPs);
 
     this.twoMPsData = [];
 
     for (let mp in twoMPs) { 
-      let data = this.getMPData(twoMPs[mp]);
-      //console.log(data);
-      this.twoMPsData.push(data);
+      let result = this.data.getMPData(twoMPs[mp]);
+      //console.log(result);
+      this.twoMPsData.push(result);
     }  
 
     //updates DOM on array change
@@ -188,10 +55,7 @@ export class MpmashComponent implements OnInit {
     let mp_a = this.twoMPsData[0]["id"]
     let mp_b = this.twoMPsData[1]["id"]
 
-    this.fakeDatabase[mp_a].rating = newRatings[0];
-    this.fakeDatabase[mp_b].rating = newRatings[1];
-
-    //console.log(this.fakeDatabase);
+    this.data.updateMPRatings(newRatings,mp_a,mp_b); 
 
     //upload two new mps
     this.loadNewMPs();
