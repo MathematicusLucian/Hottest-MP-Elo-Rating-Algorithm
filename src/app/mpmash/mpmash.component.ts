@@ -13,79 +13,79 @@ export class MpmashComponent implements OnInit {
       "name": "Boris Johnson",
       "img": "fgaagefeg.png",
       "gender": 0, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Stella Creasy",
       "img": "sfg68sg86f.png",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Penny Mordaunt",
       "img": "fgtsdt7fgd7.png",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Sajid Javid",
       "img": "fd8gstg8fa.jpeg",
       "gender": 0, 
-      "rating": 10
+      "rating": 0
     }, 
     {
       "name": "Priti Patel",
       "img": "gf6dg6s.png",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Esther McVey",
       "img": "8dfgfds8fg.png",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Jo Johnson",
       "img": "gdf7fgdh.jpg",
       "gender": 0, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Theresa May",
       "img": "sfhsdfghk.jpeg",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     }, 
     {
       "name": "Luciana Berger",
       "img": "24wea43.jpeg",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Zac Goldsmith",
       "img": "61sdfds2262756.jpg",
       "gender": 0, 
-      "rating": 10
+      "rating": 0
     },
     {
       "name": "Diane Abbott",
       "img": "gsg7ayg9.jpeg",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     }, 
     {
       "name": "Elizabeth Truss",
       "img": "sftdt8.jpeg",
       "gender": 1, 
-      "rating": 10
+      "rating": 0
     }, 
     {
       "name": "Gavin Williamson",
       "img": "fsdfs4af.png",
       "gender": 0, 
-      "rating": 10
+      "rating": 0
     }
   ];
 
