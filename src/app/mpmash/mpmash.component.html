@@ -1,1 +1,14 @@
-<p>mpmash works!</p>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+ 
+    <div class="mp-card-container">
+  
+      <mat-card *ngFor="let mp of twoMPsData; index as i" (click)="voteForMP(i)" fxFlex="50%" class="mp-card"> 
+        <div mat-card-image [style.background-image]="'url(./assets/img/'+ mp.img +')'"></div> 
+        <mat-card-actions>
+          <button mat-button>{{ mp.name }}: {{ mp.rating }}</button>
+        </mat-card-actions>
+      </mat-card>  
+  
+    </div>
+  
+  </div>
