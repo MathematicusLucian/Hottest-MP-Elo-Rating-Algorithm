@@ -1,1 +1,51 @@
-<p>mpmash-scoreboard works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Scoreboard</mat-card-title>
+    </mat-card-header>
+    <mat-card-content> 
+  
+      <form [formGroup]="scoreboardForm" role="form">
+  
+          <mat-form-field>   
+  
+            <input matInput name="name" placeholder="Name" formControlName="name" required>
+            <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+  
+          </mat-form-field>   
+  
+          <mat-form-field>  
+  
+            <mat-select name="gender" placeholder="Gender (Male of Female)" formControlName="gender" required> 
+                <mat-option value="" disabled selected>Select Gender</mat-option>
+                <mat-option  *ngFor="let gender of genders" [value]="gender.gender_id">{{gender.gender}}</mat-option>
+            </mat-select>  
+  
+          </mat-form-field>   
+  
+          <button mat-raised-button (click)="filterScoreboard()" color="primary" [disabled]="!scoreboardForm.valid">Create</button>
+  
+      </form>  
+  
+    </mat-card-content> 
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-header>
+        <mat-card-title>League Table</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>  
+  
+      <table mat-table [dataSource]="dataScoreboard" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+      </table> 
+  
+    </mat-card-content> 
+  </mat-card>
+  
+  <router-outlet></router-outlet>
