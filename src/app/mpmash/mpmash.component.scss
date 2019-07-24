@@ -1,81 +1,93 @@
 .container {
     padding: 10px 0 0 0;
-}
 
-.mp-card-container {
-    background: #e0e0e0; 
-    max-width: 800px;
-    flex-basis: auto; 
-    flex-grow: 1;
+    h2 {
+        font-weight: 400;
+        font-size: 1.7em;
+        margin: 11px;
+    }
 
-    .mp-card { 
-        margin: 0;  
-        cursor: pointer;
-    
-        .mat-card-image { 
-            height: 400px;
-            overflow-y: hidden; 
-            background-size: 100% auto;
+    .gender_select {
+        background-color: #e91e63;
+    }
+
+    .mp-card-container {
+        background: #e0e0e0; 
+        max-width: 800px;
+        flex-basis: auto; 
+        flex-grow: 1;
+
+        .mp-card { 
+            margin: 0;  
+            cursor: pointer;
+        
+            .mat-card-image { 
+                height: 400px;
+                overflow-y: hidden; 
+                background-size: 100% auto;
+            } 
+
+            .mat-card-actions {
+                padding: 0;
+                margin: -16px;
+                text-align: center;
+
+                .mat-button {
+                    padding: 12px 24px;
+                    font-size: 1.7em; 
+                    font-weight: 300; 
+                }
+            }
+        
         } 
-
-        .mat-card-actions {
-            padding: 0;
-            margin: -16px;
-            text-align: center;
-
-            .mat-button {
-                padding: 12px 24px;
-                font-size: 2em;
-            }
-        }
-       
-    } 
-}
-
-@media only screen and (max-width: 1020px) {
-
-    .mp-card-container { 
-    
-        .mp-card {  
-        
-            .mat-card-image { 
-                height: 340px;
-
-            }
-
-        }
-
     }
-}
 
-@media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1020px) {
 
-    .mp-card-container { 
-    
-        .mp-card {  
+        .mp-card-container { 
         
-            .mat-card-image { 
-                height: 255px;
+            .mp-card {  
+            
+                .mat-card-image { 
+                    height: 340px;
+
+                }
 
             }
 
         }
-
     }
-}
 
-@media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 768px) {
 
-    .mp-card-container { 
-    
-        .mp-card {  
+        .mp-card-container { 
         
-            .mat-card-image { 
-                height: 150px !important;
+            .mp-card {  
+            
+                .mat-card-image { 
+                    height: 255px;
+
+                }
 
             }
 
         }
-
     }
+
+    @media only screen and (max-width: 480px) {
+
+        .mp-card-container { 
+        
+            .mp-card {  
+            
+                .mat-card-image { 
+                    height: 150px !important;
+
+                }
+
+            }
+
+        }
+    }
+    
 }
