@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 
 export class MP {
   constructor(
+    id: string,
     name: string,
     gender: string,
     rating: string,
@@ -70,22 +71,12 @@ export class DataService {
     catchError(this.handleError));
   }  
    
-  updateMPRatings(newRatings,mp_a,mp_b){
-
-    return this.http.put(`${this.baseUrl}/updateMPRating`, { data: this.mps })
-      .pipe(map((res) => {
-        const theMP = this.mps.find((item) => {
-          return +item['id'] === +mp_a;
-        });
-        if (theMP) { 
-          theMP['rating'] = newRatings[0];
-        }
-        return this.mps;
-      }),
-      catchError(this.handleError));
-
-    //this.fakeDatabase[mp_a]["rating"] = newRatings[0];
-    //this.fakeDatabase[mp_b]["rating"] = newRatings[1];
+  updateMPRatings(winner_mp, loser_mp){ 
+    return this.http.get(`${this.baseUrl}/updateMPRating?w=${winner_mp}&l=${loser_mp}`).pipe(
+      map((res) => { 
+        return res['data'];
+    }),
+    catchError(this.handleError)); 
   }
 
 }

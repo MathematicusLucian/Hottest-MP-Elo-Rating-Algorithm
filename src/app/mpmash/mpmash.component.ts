@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 
 export class MP {
   constructor(
+    id: string,
     name: string,
     gender: string,
     rating: string,
@@ -57,30 +58,30 @@ export class MpmashComponent implements OnInit {
   } 
 
   voteForMP(mp_chosen){  
-    let newRatings = this.calculateRatings(mp_chosen);
-
-    //update mp's ratings in database
-    let mp_a = this.twoMPsData[0]["id"]
-    let mp_b = this.twoMPsData[1]["id"]
-
-    //this.data.updateMPRatings(newRatings,mp_a,mp_b); 
-
     this.success = '';
     this.error = '';
 
-    /* this.data.updateMPRatings(newRatings,mp_a,mp_b)
-      .subscribe(
-        (res) => {
-          this.mps    = res;
-          this.success = 'Updated successfully';
-        },
-        (err) => this.error = err
-      ); */
+    let mp_not_chosen = 1 - mp_chosen;  
+
+    let winner_mp = this.twoMPsData[mp_chosen]["id"];
+    let loser_mp = this.twoMPsData[mp_not_chosen]["id"]; 
+ 
+    console.log(winner_mp + ", " + loser_mp);
+
+    this.data.updateMPRatings(winner_mp, loser_mp).subscribe(
+      (res: MP[]) => { 
+        console.log(res);
+      },
+      (err) => {
+        //this.error = err; 
+      }
+    );
 
     //upload two new mps
     this.getTwoRandomMPs(this.gender_chosen);
   }
 
+  //MOVE LOGIC TO BACK-END AND JUST PASS winnerID, loserID
   calculateRatings(mp_chosen) {                 
     let ea = 1/(1+10^((this.twoMPsData[0]["rating"] - this.twoMPsData[1]["rating"])/400));
     let eb = 1/(1+10^((this.twoMPsData[1]["rating"] - this.twoMPsData[0]["rating"])/400));
