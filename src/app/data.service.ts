@@ -47,7 +47,7 @@ export class DataService {
   getMP(id): Observable<MP[]> {
     return this.http.get(`${this.baseUrl}/getMP/?id=${id}`).pipe(  
       map((res) => {
-        this.mps = res['data'];
+        this.mps = res['data']; 
         return this.mps;
     }),
     catchError(this.handleError));

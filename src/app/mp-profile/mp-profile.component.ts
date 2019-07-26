@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MP } from "../models/mp";
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-mp-profile',
@@ -10,13 +11,26 @@ import { ActivatedRoute } from '@angular/router';
 export class MpProfileComponent implements OnInit {
  
   mp: MP = "";
-  
-  constructor(private route: ActivatedRoute) {}
+  MPData = []; 
 
-  ngOnInit() {
-    console.log(this.route.snapshot);
-    this.mp = this.route.snapshot.paramMap.get('id');
-    console.log(this.mp);
+  constructor(private route: ActivatedRoute, private data: DataService) {}
+
+  ngOnInit() { 
+    this.mp = this.route.snapshot.paramMap.get('id'); 
+    this.getMPDetails(this.mp); 
   }
+
+  getMPDetails(mp_id) {
+    this.data.getMP(mp_id).subscribe(
+      (res: MP[]) => { 
+        console.log(res);
+        this.MPData = res;
+      },
+      (err) => {
+        //this.error = err; 
+      }
+    );
+    return this.MPData;
+  } 
 
 }
