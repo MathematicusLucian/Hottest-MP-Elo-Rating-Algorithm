@@ -5,6 +5,7 @@ import { DataService } from '../data.service';
 
 export class MP {
   constructor(
+    id: string,
     name: string,
     gender: string,
     rating: string,
@@ -12,6 +13,7 @@ export class MP {
 }
 
 export interface dataElement {
+  Id: string,
   Image: string;
   Name: string;
   Constituency: string;
@@ -66,15 +68,18 @@ export class MpmashScoreboardComponent implements OnInit {
     this.data.getAllMPs().subscribe(
       (res: MP[]) => {
         this.mps = res; 
+        console.log(res);
 
         for (let mp in this.mps){
           this.elements.push({
+            Id: this.mps[mp]["id"],
             Image: this.mps[mp]["img"],
             Name: this.mps[mp]["name"],
             Constituency: this.mps[mp]["constit"],
             Rating: this.mps[mp]["rating"]+""
           }); 
-        }  
+        }
+        console.log(this.elements);  
     
         this.dataScoreboard.data = this.elements;
       },

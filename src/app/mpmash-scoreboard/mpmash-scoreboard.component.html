@@ -46,7 +46,9 @@
       
         <ng-container matColumnDef="Name">
             <div mat-header-cell *matHeaderCellDef>Name</div>
-            <div mat-cell class="name-cell" *matCellDef="let element">{{ element.Name }}</div>
+            <div mat-cell class="name-cell" *matCellDef="let element">
+              <a href="/mp/{{ element.Id }}">{{ element.Name }}</a>
+            </div>
         </ng-container>
         
         <ng-container matColumnDef="Constituency">
