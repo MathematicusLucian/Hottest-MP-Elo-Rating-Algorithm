@@ -33,41 +33,25 @@ export class MpmashComponent implements OnInit {
   constructor(private data: DataService) {}
 
   ngOnInit(){
-    this.loadNewMPs(this.gender_chosen);
+    this.getTwoRandomMPs(this.gender_chosen);
   }
 
   chooseGender(gender){ 
     this.gender_chosen = gender;
-    this.loadNewMPs(gender);
+    this.getTwoRandomMPs(gender);
   }
 
   getTwoRandomMPs(gender) {
     this.data.getTwoRandomMPs(gender).subscribe(
-      (res: MP[]) => {
-        this.mps = res;
-        console.log(this.mps);  
+      (res: MP[]) => { 
+        this.twoMPsData = res;
       },
       (err) => {
-        //this.error = err;
-        this.mps = this.data.fakeDatabase;
+        //this.error = err; 
       }
     );
     return this.mps;
-  }
-
-  loadNewMPs(gender) {
-    console.log(this.getTwoRandomMPs(gender));
-    let twoMPs = this.data.chooseTwoRandomMPs(gender);  
-
-    this.twoMPsData = [];
-
-    for (let mp in twoMPs) { 
-      let result = this.data.getMPData(twoMPs[mp]); 
-      this.twoMPsData.push(result);
-    }  
-
-    //updates DOM on array change
-  }
+  } 
 
   voteForMP(mp_chosen){  
     let newRatings = this.calculateRatings(mp_chosen);
@@ -79,7 +63,7 @@ export class MpmashComponent implements OnInit {
     this.data.updateMPRatings(newRatings,mp_a,mp_b); 
 
     //upload two new mps
-    this.loadNewMPs(this.gender_chosen);
+    this.getTwoRandomMPs(this.gender_chosen);
   }
 
   calculateRatings(mp_chosen) {                 

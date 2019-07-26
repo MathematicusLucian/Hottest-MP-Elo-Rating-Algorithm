@@ -165,39 +165,7 @@ export class DataService {
         return this.mps;
     }),
     catchError(this.handleError));
-  } 
-
-  //MOVE TO API
-  chooseTwoRandomMPs(gender_chosen) { 
-
-    let mpChosenGenderData = this.updateGenderData(gender_chosen);
-    let total_applicable_mps = mpChosenGenderData.length; 
-
-    let random_a = Math.floor((Math.random() * total_applicable_mps));
-    let random_b = Math.floor((Math.random() * total_applicable_mps));
-    
-    while(random_a == random_b){
-      random_b = Math.floor((Math.random() * total_applicable_mps));
-    }   
-
-    random_a = mpChosenGenderData[random_a]["id"];  
-    random_b = mpChosenGenderData[random_b]["id"]; 
-
-    let twoMps : number[] = [random_a,random_b];
-    return twoMps;    
-  }
-
-  //WILL DELETE
-  updateGenderData(gender_chosen) {   
-    let mpChosenGenderData = [];
-    for (let mp in this.fakeDatabase) {   
-      if(this.fakeDatabase[mp]["gender"] == gender_chosen){
-        let data = this.getMPData(mp); 
-        mpChosenGenderData.push(data);
-      }
-    }   
-    return mpChosenGenderData; 
-  } 
+  }  
   
   //MOVE TO API
   updateMPRatings(newRatings,mp_a,mp_b){

@@ -18,7 +18,7 @@
     <div class="mp-card-container">
   
       <mat-card *ngFor="let mp of twoMPsData; index as i" (click)="voteForMP(i)" fxFlex="50%" class="mp-card"> 
-        <div mat-card-image [style.background-image]="'url(./assets/img/'+ mp.img +')'"></div> 
+        <div mat-card-image [style.background-image]="'url('+ mp.img +')'"></div> 
         <mat-card-actions>
           <button mat-button>{{ mp.name }}: {{ mp.rating }}</button>
         </mat-card-actions>
