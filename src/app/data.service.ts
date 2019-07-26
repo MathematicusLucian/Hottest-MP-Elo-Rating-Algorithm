@@ -16,7 +16,7 @@ export class MP {
 })
 export class DataService {
 
-  baseUrl = 'http://localhost:8888/MAMP/analytica_api/getTwoRandomMPs.php';
+  baseUrl = 'http://localhost:8888/MAMP/analytica_api/';
   mps: MP[]; 
 
   fakeDatabase: MP[] = [
@@ -116,14 +116,42 @@ export class DataService {
     // return an observable with a user friendly message
     return throwError('Error! something went wrong.');
   }    
+
+  getAllMPs(): Observable<MP[]> {
+    return this.http.get(`${this.baseUrl}/getAllMPs/`).pipe(  
+      map((res) => {
+        this.mps = res['data'];
+        return this.mps;
+    }),
+    catchError(this.handleError));
+  } 
+
+  getMP(id): Observable<MP[]> {
+    return this.http.get(`${this.baseUrl}/getMP/?id=${id}`).pipe(  
+      map((res) => {
+        this.mps = res['data'];
+        return this.mps;
+    }),
+    catchError(this.handleError));
+  } 
+
   getTwoRandomMPs(gender): Observable<MP[]> {
-    return this.http.get(`${this.baseUrl}/?g=${gender}`).pipe(  
+    return this.http.get(`${this.baseUrl}/getTwoRandomMPs/?g=${gender}`).pipe(  
       map((res) => {
         this.mps = res['data'];
         return this.mps;
     }),
     catchError(this.handleError));
   }
+
+  countMPs(gender): Observable<MP[]> {
+    return this.http.get(`${this.baseUrl}/countMPs/?g=${gender}`).pipe(  
+      map((res) => {
+        this.mps = res['data'];
+        return this.mps;
+    }),
+    catchError(this.handleError));
+  } 
 
   chooseTwoRandomMPs(gender_chosen) { 
 
