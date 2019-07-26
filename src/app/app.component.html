@@ -1,13 +1,15 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span id="app-title">{{ title }}</span>
+    <span id="app-title" [routerLink]="['/']">
+      {{ title }}
+    </span>
     <span class="toolbar-spacer"></span>
     <span class="toolbar-fill-remaining-space">
-      <a href="./mp/mash/">
+      <a [routerLink]="['/mp/mash/']">
         <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="whatshot icon">whatshot</mat-icon>
         Play MP-Mash
       </a>
-      <a href="./mp/mash/scores/"> 
+      <a [routerLink]="['/mp/mash/scores/']"> 
         <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="clear_all icon">clear_all</mat-icon>
         MP-Mash Scores
       </a>
