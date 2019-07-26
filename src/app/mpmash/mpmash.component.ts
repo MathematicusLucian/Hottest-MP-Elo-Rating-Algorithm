@@ -64,21 +64,19 @@ export class MpmashComponent implements OnInit {
     let mp_not_chosen = 1 - mp_chosen;  
 
     let winner_mp = this.twoMPsData[mp_chosen]["id"];
-    let loser_mp = this.twoMPsData[mp_not_chosen]["id"]; 
- 
-    console.log(winner_mp + ", " + loser_mp);
+    let loser_mp = this.twoMPsData[mp_not_chosen]["id"];  
 
     this.data.updateMPRatings(winner_mp, loser_mp).subscribe(
       (res: MP[]) => { 
-        console.log(res);
+        if(res[0]["update"]=="SUCCESS"){
+          //upload two new mps
+          this.getTwoRandomMPs(this.gender_chosen);
+        }
       },
       (err) => {
         //this.error = err; 
       }
-    );
-
-    //upload two new mps
-    this.getTwoRandomMPs(this.gender_chosen);
+    ); 
   }
 
   //MOVE LOGIC TO BACK-END AND JUST PASS winnerID, loserID
