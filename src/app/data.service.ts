@@ -16,7 +16,7 @@ export class MP {
 })
 export class DataService {
 
-  baseUrl = 'http://localhost:8888/MAMP/analytica_api/';
+  baseUrl = 'http://localhost:8888/MAMP/analytica_api';
   mps: MP[]; 
 
   fakeDatabase: MP[] = [
@@ -137,7 +137,7 @@ export class DataService {
   // ABOVE
   getMPData(mp) {
     //get mp's data from database   
-    console.log(this.fakeDatabase); 
+    //console.log(this.fakeDatabase); 
     let mpData = this.fakeDatabase[mp]; 
     let data = [{
       "id": mp,
@@ -166,11 +166,23 @@ export class DataService {
     }),
     catchError(this.handleError));
   }  
-  
-  //MOVE TO API
+   
   updateMPRatings(newRatings,mp_a,mp_b){
-    this.fakeDatabase[mp_a]["rating"] = newRatings[0];
-    this.fakeDatabase[mp_b]["rating"] = newRatings[1];
+
+    return this.http.put(`${this.baseUrl}/updateMPRating`, { data: this.mps })
+      .pipe(map((res) => {
+        const theMP = this.mps.find((item) => {
+          return +item['id'] === +mp_a;
+        });
+        if (theMP) { 
+          theMP['rating'] = newRatings[0];
+        }
+        return this.mps;
+      }),
+      catchError(this.handleError));
+
+    //this.fakeDatabase[mp_a]["rating"] = newRatings[0];
+    //this.fakeDatabase[mp_b]["rating"] = newRatings[1];
   }
 
 }

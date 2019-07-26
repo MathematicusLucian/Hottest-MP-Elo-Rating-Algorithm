@@ -30,6 +30,9 @@ export class MpmashComponent implements OnInit {
   face_b_new_rating = 0;
   k = 24;  
 
+  success = '';
+  error = '';
+
   constructor(private data: DataService) {}
 
   ngOnInit(){
@@ -60,7 +63,19 @@ export class MpmashComponent implements OnInit {
     let mp_a = this.twoMPsData[0]["id"]
     let mp_b = this.twoMPsData[1]["id"]
 
-    this.data.updateMPRatings(newRatings,mp_a,mp_b); 
+    //this.data.updateMPRatings(newRatings,mp_a,mp_b); 
+
+    this.success = '';
+    this.error = '';
+
+    this.data.updateMPRatings(newRatings,mp_a,mp_b)
+      .subscribe(
+        (res) => {
+          this.mps    = res;
+          this.success = 'Updated successfully';
+        },
+        (err) => this.error = err
+      );
 
     //upload two new mps
     this.getTwoRandomMPs(this.gender_chosen);
