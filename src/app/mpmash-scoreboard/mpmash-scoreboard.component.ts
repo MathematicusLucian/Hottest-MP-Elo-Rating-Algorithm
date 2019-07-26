@@ -52,18 +52,9 @@ export class MpmashScoreboardComponent implements OnInit {
     this.scoreboardForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(0), Validators.maxLength(60)]),
       gender: new FormControl('', [Validators.required])
-    }); 
-
-    //console.log(this.dataScoreboard);
-
-    //let dataMPs = this.data.fakeDatabase;
-    this.getAllMPs();
-    console.log(this.mps); 
-    //console.log(dataMPs);  
-
-    console.log(this.elements);
-
-    console.log(this.dataScoreboard); 
+    });  
+    
+    this.getAllMPs(); 
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -73,8 +64,7 @@ export class MpmashScoreboardComponent implements OnInit {
   getAllMPs() {
     this.data.getAllMPs().subscribe(
       (res: MP[]) => {
-        this.mps = res;
-        console.log(this.mps); 
+        this.mps = res; 
 
         for (let mp in this.mps){
           this.elements.push({
@@ -87,8 +77,7 @@ export class MpmashScoreboardComponent implements OnInit {
         this.dataScoreboard.data = this.elements;
       },
       (err) => {
-        //this.error = err;
-        this.mps = this.data.fakeDatabase; 
+        //this.error = err; 
       }
     );  
     return this.mps;
