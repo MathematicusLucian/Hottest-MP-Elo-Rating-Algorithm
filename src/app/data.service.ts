@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-//import { HttpClient } from '@angular/common/http'; 
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators'; 
+
+export class MP {
+  constructor(
+    name: string) {}
+}
 
 @Injectable({
   providedIn: 'root'
@@ -87,18 +94,58 @@ export class DataService {
     }
   ];
 
+
   total_mps = 0;
   gender_chosen = 1;
 
+
+
+  baseUrl = 'http://localhost:8888/MAMP/analytica_api/getTwoRandomMPs.php';
+  mps: MP[]; 
+
+
+
   //constructor(private http: HttpClient) { } 
-  constructor() { }
+  constructor(private http: HttpClient) { }  
 
   ngOnInit(){
     //get total_mps count from database
     this.total_mps = this.fakeDatabase.length;
   }
 
+   
+  
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+   
+    // return an observable with a user friendly message
+    return throwError('Error! something went wrong.');
+  }    
+  getAll(): Observable<MP[]> {
+    return this.http.get(`${this.baseUrl}`).pipe( ///list
+      map((res) => {
+        this.mps = res['data'];
+        return this.mps;
+    }),
+    catchError(this.handleError));
+  }
+  getMPs(): void {
+    this.getAll().subscribe(
+      (res: MP[]) => {
+        this.mps = res;
+        console.log(this.mps);
+      },
+      (err) => {
+        //this.error = err;
+      }
+    );
+  }
+
+
+
   chooseTwoRandomMPs(gender_chosen) { 
+    console.log(this.getMPs());
+
     let mpChosenGenderData = this.updateGenderData(gender_chosen);
     let total_applicable_mps = mpChosenGenderData.length; 
 
