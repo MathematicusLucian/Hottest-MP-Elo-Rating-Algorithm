@@ -40,7 +40,7 @@
         <ng-container matColumnDef="Image">
             <div mat-header-cell *matHeaderCellDef>Image</div>
             <div mat-cell class="image-cell" *matCellDef="let element">
-                <img src="./assets/img/{{ element.Image }}">
+                <img src="{{ element.Image }}">
             </div>
         </ng-container>
       

@@ -59,7 +59,7 @@ export class MpmashScoreboardComponent implements OnInit {
     //let dataMPs = this.data.fakeDatabase;
     this.getAllMPs();
     console.log(this.mps); 
-    console.log(dataMPs);  
+    //console.log(dataMPs);  
 
     console.log(this.elements);
 
