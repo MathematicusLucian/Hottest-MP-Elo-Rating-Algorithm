@@ -46,10 +46,16 @@
         } 
     }
 
-    #footer_img {
+    #footer-img-card  {
+        max-height: 250px;
+        overflow: hidden;
 
-        img {
+        #footer-img {
+            height: 180px;
             position: relative;
+            background-image: url('/assets/img/sexy_mp.png');
+            background-size: cover;
+            background-position-y: 45%;
             width: 100%;
         }
     }
@@ -67,6 +73,14 @@
 
             }
 
+        }
+
+        #footer-img-card  { 
+        
+            #footer-img {
+                height: 100px; 
+            }
+        
         }
     }
 
