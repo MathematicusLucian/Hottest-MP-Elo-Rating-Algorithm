@@ -17,7 +17,7 @@ export class MP {
 export class DataService {
 
   baseUrl = 'http://localhost:8888/MAMP/analytica_api/getTwoRandomMPs.php';
-  mps: MP[];  
+  mps: MP[]; 
 
   fakeDatabase: MP[] = [
     {
@@ -102,45 +102,27 @@ export class DataService {
 
   total_mps = 0;
   gender_chosen = 1;
-  
+ 
   constructor(private http: HttpClient) { }  
 
   ngOnInit(){
     //get total_mps count from database
-    this.total_mps = this.mps.length;
+    this.total_mps = this.fakeDatabase.length;
   }
-  
+
   private handleError(error: HttpErrorResponse) {
     console.log(error);
    
     // return an observable with a user friendly message
     return throwError('Error! something went wrong.');
   }    
-
-  getAll(): Observable<MP[]> {
-    return this.http.get(`${this.baseUrl}`).pipe( ///list
+  getTwoRandomMPs(gender): Observable<MP[]> {
+    return this.http.get(`${this.baseUrl}/?g=${gender}`).pipe(  
       map((res) => {
         this.mps = res['data'];
         return this.mps;
     }),
     catchError(this.handleError));
-  }
-
-  getMPs(): void {
-    this.getAll().subscribe(
-      (res: MP[]) => {
-        this.mps = res;
-        this.total_mps = this.mps.length;
-        console.log(this.mps);  
-      },
-      (err) => {
-        //this.error = err;
-        this.mps = this.fakeDatabase; 
-        this.total_mps = this.mps.length;
-        console.log(this.fakeDatabase);
-      }
-    );
-    console.log(this.mps);
   }
 
   chooseTwoRandomMPs(gender_chosen) { 
@@ -163,10 +145,9 @@ export class DataService {
   }
 
   getMPData(mp) {
-    //get mp's data from database  
-    this.getMPs();
-    console.log(this.mps); 
-    let mpData = this.mps[mp]; 
+    //get mp's data from database   
+    console.log(this.fakeDatabase); 
+    let mpData = this.fakeDatabase[mp]; 
     let data = [{
       "id": mp,
       name: mpData["name"],
@@ -178,8 +159,8 @@ export class DataService {
 
   updateGenderData(gender_chosen) {
     let mpChosenGenderData = [];
-    for (let mp in this.mps) {   
-      if(this.mps[mp]["gender"] == gender_chosen){
+    for (let mp in this.fakeDatabase) {   
+      if(this.fakeDatabase[mp]["gender"] == gender_chosen){
         let data = this.getMPData(mp); 
         mpChosenGenderData.push(data);
       }
@@ -188,8 +169,8 @@ export class DataService {
   } 
   
   updateMPRatings(newRatings,mp_a,mp_b){
-    this.mps[mp_a]["rating"] = newRatings[0];
-    this.mps[mp_b]["rating"] = newRatings[1];
+    this.fakeDatabase[mp_a]["rating"] = newRatings[0];
+    this.fakeDatabase[mp_b]["rating"] = newRatings[1];
   }
 
 }

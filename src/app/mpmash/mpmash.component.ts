@@ -1,12 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
+export class MP {
+  constructor(
+    name: string,
+    gender: string,
+    rating: string,
+    img: string) {}
+}
+
 @Component({
   selector: 'app-mpmash',
   templateUrl: './mpmash.component.html',
   styleUrls: ['./mpmash.component.scss']
 })
 export class MpmashComponent implements OnInit {
+  mps: MP[]; 
+
   gender_chosen = 1;
   mpChosenGenderData = [];
 
@@ -23,7 +33,6 @@ export class MpmashComponent implements OnInit {
   constructor(private data: DataService) {}
 
   ngOnInit(){
-    this.data.getMPs();
     this.loadNewMPs(this.gender_chosen);
   }
 
@@ -32,7 +41,22 @@ export class MpmashComponent implements OnInit {
     this.loadNewMPs(gender);
   }
 
+  getTwoRandomMPs(gender) {
+    this.data.getTwoRandomMPs(gender).subscribe(
+      (res: MP[]) => {
+        this.mps = res;
+        console.log(this.mps);  
+      },
+      (err) => {
+        //this.error = err;
+        this.mps = this.data.fakeDatabase;
+      }
+    );
+    return this.mps;
+  }
+
   loadNewMPs(gender) {
+    console.log(this.getTwoRandomMPs(gender));
     let twoMPs = this.data.chooseTwoRandomMPs(gender);  
 
     this.twoMPsData = [];
@@ -49,8 +73,8 @@ export class MpmashComponent implements OnInit {
     let newRatings = this.calculateRatings(mp_chosen);
 
     //update mp's ratings in database
-    let mp_a = this.twoMPsData[0]["id"];
-    let mp_b = this.twoMPsData[1]["id"];
+    let mp_a = this.twoMPsData[0]["id"]
+    let mp_b = this.twoMPsData[1]["id"]
 
     this.data.updateMPRatings(newRatings,mp_a,mp_b); 
 
