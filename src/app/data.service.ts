@@ -134,6 +134,19 @@ export class DataService {
     }),
     catchError(this.handleError));
   } 
+  // ABOVE
+  getMPData(mp) {
+    //get mp's data from database   
+    console.log(this.fakeDatabase); 
+    let mpData = this.fakeDatabase[mp]; 
+    let data = [{
+      "id": mp,
+      name: mpData["name"],
+      rating: mpData["rating"],
+      img: mpData["img"] 
+    }]; 
+    return data[0]; 
+  }
 
   getTwoRandomMPs(gender): Observable<MP[]> {
     return this.http.get(`${this.baseUrl}/getTwoRandomMPs/?g=${gender}`).pipe(  
@@ -153,6 +166,7 @@ export class DataService {
     catchError(this.handleError));
   } 
 
+  //MOVE TO API
   chooseTwoRandomMPs(gender_chosen) { 
 
     let mpChosenGenderData = this.updateGenderData(gender_chosen);
@@ -172,20 +186,11 @@ export class DataService {
     return twoMps;    
   }
 
-  getMPData(mp) {
-    //get mp's data from database   
-    console.log(this.fakeDatabase); 
-    let mpData = this.fakeDatabase[mp]; 
-    let data = [{
-      "id": mp,
-      name: mpData["name"],
-      rating: mpData["rating"],
-      img: mpData["img"] 
-    }]; 
-    return data[0]; 
-  }
-
+  //API CALL
   updateGenderData(gender_chosen) {
+    //this.gender_chosen = gender_chosen;
+    //getTwoRandomMPs(gender_chosen);
+
     let mpChosenGenderData = [];
     for (let mp in this.fakeDatabase) {   
       if(this.fakeDatabase[mp]["gender"] == gender_chosen){
@@ -196,6 +201,7 @@ export class DataService {
     return mpChosenGenderData; 
   } 
   
+  //MOVE TO API
   updateMPRatings(newRatings,mp_a,mp_b){
     this.fakeDatabase[mp_a]["rating"] = newRatings[0];
     this.fakeDatabase[mp_b]["rating"] = newRatings[1];
