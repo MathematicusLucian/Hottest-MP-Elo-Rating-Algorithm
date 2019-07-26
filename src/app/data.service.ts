@@ -186,11 +186,8 @@ export class DataService {
     return twoMps;    
   }
 
-  //API CALL
-  updateGenderData(gender_chosen) {
-    //this.gender_chosen = gender_chosen;
-    //getTwoRandomMPs(gender_chosen);
-
+  //WILL DELETE
+  updateGenderData(gender_chosen) {   
     let mpChosenGenderData = [];
     for (let mp in this.fakeDatabase) {   
       if(this.fakeDatabase[mp]["gender"] == gender_chosen){

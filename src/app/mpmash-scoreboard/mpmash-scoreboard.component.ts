@@ -3,6 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableModule, MatTableDataSource, MatTable, MatSort } from '@angular/material';
 import { DataService } from '../data.service';
 
+export class MP {
+  constructor(
+    name: string,
+    gender: string,
+    rating: string,
+    img: string) {}
+}
+
 export interface dataElement {
   Image: string;
   Name: string;
@@ -18,6 +26,8 @@ const ELEMENT_DATA: dataElement[] = [];
 })
 export class MpmashScoreboardComponent implements OnInit {
   public scoreboardForm: FormGroup; 
+  
+  mps: MP[]; 
 
   gender_chosen = 0;
 
@@ -44,9 +54,11 @@ export class MpmashScoreboardComponent implements OnInit {
       gender: new FormControl('', [Validators.required])
     }); 
 
-    console.log(this.dataScoreboard);
+    //console.log(this.dataScoreboard);
 
-    let dataMPs = this.data.fakeDatabase;
+    //let dataMPs = this.data.fakeDatabase;
+    let dataMPs = this.getAllMPs();
+    console.log(dataMPs);  
 
     for (let mp in dataMPs){
       this.elements.push({
@@ -65,6 +77,20 @@ export class MpmashScoreboardComponent implements OnInit {
 
   public hasError = (controlName: string, errorName: string) =>{
     return this.scoreboardForm.controls[controlName].hasError(errorName);
+  }
+
+  getAllMPs() {
+    this.data.getAllMPs().subscribe(
+      (res: MP[]) => {
+        this.mps = res;
+        console.log(this.mps);  
+      },
+      (err) => {
+        //this.error = err;
+        this.mps = this.data.fakeDatabase;
+      }
+    );
+    return this.mps;
   }
 
   filterScoreboard() { 
