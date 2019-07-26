@@ -14,6 +14,7 @@ export class MP {
 export interface dataElement {
   Image: string;
   Name: string;
+  Constituency: string;
   Rating: string;
 }  
 
@@ -36,7 +37,7 @@ export class MpmashScoreboardComponent implements OnInit {
     {gender_id: 1, gender: 'Female'}
   ];
 
-  displayedColumns: string[] = ['Image', 'Name', 'Rating'];
+  displayedColumns: string[] = ['Image', 'Name', 'Constituency', 'Rating'];
   columnsToDisplay: string[] = this.displayedColumns;
 
   dataScoreboard: MatTableDataSource<dataElement> ;
@@ -70,6 +71,7 @@ export class MpmashScoreboardComponent implements OnInit {
           this.elements.push({
             Image: this.mps[mp]["img"],
             Name: this.mps[mp]["name"],
+            Constituency: this.mps[mp]["constit"],
             Rating: this.mps[mp]["rating"]+""
           }); 
         }  

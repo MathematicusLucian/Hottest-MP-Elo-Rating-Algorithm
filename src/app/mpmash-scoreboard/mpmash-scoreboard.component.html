@@ -48,6 +48,11 @@
             <div mat-header-cell *matHeaderCellDef>Name</div>
             <div mat-cell class="name-cell" *matCellDef="let element">{{ element.Name }}</div>
         </ng-container>
+        
+        <ng-container matColumnDef="Constituency">
+          <div mat-header-cell *matHeaderCellDef>Constituency</div>
+          <div mat-cell class="constituency-cell" *matCellDef="let element">{{ element.Constituency }}</div>
+      </ng-container>
       
         <ng-container matColumnDef="Rating">
             <div mat-header-cell *matHeaderCellDef>Rating</div>

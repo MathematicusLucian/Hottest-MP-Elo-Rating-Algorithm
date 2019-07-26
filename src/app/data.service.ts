@@ -142,6 +142,7 @@ export class DataService {
     let data = [{
       "id": mp,
       name: mpData["name"],
+      constituency: mpData["constit"],
       rating: mpData["rating"],
       img: mpData["img"] 
     }]; 
