@@ -10,7 +10,7 @@ import { MpExpensesScoreboardComponent } from './mp-expenses-scoreboard/mp-expen
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'mp/profile', component: MpProfileComponent }, 
+  { path: 'mp/profile/:id', component: MpProfileComponent }, 
   { path: 'mp/mash', component: MpmashComponent  }, 
   { path: 'mp/mash/scores', component: MpmashScoreboardComponent }, 
   { path: 'mp/brexit-positions', component: BrexitPositionScoreboardComponent }, 
