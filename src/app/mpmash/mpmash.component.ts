@@ -23,6 +23,7 @@ export class MpmashComponent implements OnInit {
   constructor(private data: DataService) {}
 
   ngOnInit(){
+    this.data.getMPs();
     this.loadNewMPs(this.gender_chosen);
   }
 
@@ -48,8 +49,8 @@ export class MpmashComponent implements OnInit {
     let newRatings = this.calculateRatings(mp_chosen);
 
     //update mp's ratings in database
-    let mp_a = this.twoMPsData[0]["id"]
-    let mp_b = this.twoMPsData[1]["id"]
+    let mp_a = this.twoMPsData[0]["id"];
+    let mp_b = this.twoMPsData[1]["id"];
 
     this.data.updateMPRatings(newRatings,mp_a,mp_b); 
 
