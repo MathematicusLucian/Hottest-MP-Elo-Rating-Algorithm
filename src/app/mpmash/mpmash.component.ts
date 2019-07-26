@@ -68,14 +68,14 @@ export class MpmashComponent implements OnInit {
     this.success = '';
     this.error = '';
 
-    this.data.updateMPRatings(newRatings,mp_a,mp_b)
+    /* this.data.updateMPRatings(newRatings,mp_a,mp_b)
       .subscribe(
         (res) => {
           this.mps    = res;
           this.success = 'Updated successfully';
         },
         (err) => this.error = err
-      );
+      ); */
 
     //upload two new mps
     this.getTwoRandomMPs(this.gender_chosen);
