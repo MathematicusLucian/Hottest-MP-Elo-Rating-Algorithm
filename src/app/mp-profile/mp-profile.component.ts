@@ -22,8 +22,7 @@ export class MpProfileComponent implements OnInit {
 
   getMPDetails(mp_id) {
     this.data.getMP(mp_id).subscribe(
-      (res: MP[]) => { 
-        console.log(res);
+      (res: MP[]) => {  
         this.MPData = res;
       },
       (err) => {

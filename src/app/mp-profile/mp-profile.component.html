@@ -1,1 +1,15 @@
-<p>mp-profile works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>MP Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngFor="let mp of MPData">  
+
+        <img src="{{ mp.img }}">
+
+        <p>Name: {{ mp.name }}</p>
+        <p>Constituency: {{ mp.constit }}</p>
+        <p>Gender: {{ mp.gender }}</p>
+        <p>Sexiness Rating: {{ mp.rating }}</p> 
+  
+    </mat-card-content> 
+</mat-card>
