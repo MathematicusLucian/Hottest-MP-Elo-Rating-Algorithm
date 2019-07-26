@@ -25,6 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PollComponent } from './poll/poll.component';
+import { PollResultsComponent } from './poll-results/poll-results.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MpmashComponent,
     MpmashScoreboardComponent,
     BrexitPositionScoreboardComponent,
-    MpExpensesScoreboardComponent
+    MpExpensesScoreboardComponent,
+    PollComponent,
+    PollResultsComponent
   ],
   imports: [
     BrowserModule,
