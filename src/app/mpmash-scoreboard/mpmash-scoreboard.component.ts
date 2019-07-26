@@ -57,18 +57,9 @@ export class MpmashScoreboardComponent implements OnInit {
     //console.log(this.dataScoreboard);
 
     //let dataMPs = this.data.fakeDatabase;
-    let dataMPs = this.getAllMPs();
+    this.getAllMPs();
+    console.log(this.mps); 
     console.log(dataMPs);  
-
-    for (let mp in dataMPs){
-      this.elements.push({
-        Image: dataMPs[mp]["img"],
-        Name: dataMPs[mp]["name"],
-        Rating: dataMPs[mp]["rating"]+""
-      }); 
-    }  
-
-    this.dataScoreboard.data = this.elements;
 
     console.log(this.elements);
 
@@ -83,13 +74,23 @@ export class MpmashScoreboardComponent implements OnInit {
     this.data.getAllMPs().subscribe(
       (res: MP[]) => {
         this.mps = res;
-        console.log(this.mps);  
+        console.log(this.mps); 
+
+        for (let mp in this.mps){
+          this.elements.push({
+            Image: this.mps[mp]["img"],
+            Name: this.mps[mp]["name"],
+            Rating: this.mps[mp]["rating"]+""
+          }); 
+        }  
+    
+        this.dataScoreboard.data = this.elements;
       },
       (err) => {
         //this.error = err;
-        this.mps = this.data.fakeDatabase;
+        this.mps = this.data.fakeDatabase; 
       }
-    );
+    );  
     return this.mps;
   }
 
