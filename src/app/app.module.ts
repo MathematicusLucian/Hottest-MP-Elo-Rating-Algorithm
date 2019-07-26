@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PollComponent } from './poll/poll.component';
 import { PollResultsComponent } from './poll-results/poll-results.component';
+import { D3mapComponent } from './d3map/d3map.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PollResultsComponent } from './poll-results/poll-results.component';
     BrexitPositionScoreboardComponent,
     MpExpensesScoreboardComponent,
     PollComponent,
-    PollResultsComponent
+    PollResultsComponent,
+    D3mapComponent
   ],
   imports: [
     BrowserModule,
