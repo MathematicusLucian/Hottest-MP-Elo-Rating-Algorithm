@@ -5,16 +5,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 I was intrigued by the scene in the movie Social Network in which Eduardo Saverin, then a friend of Facebook founder Mark Zuckerberg, writes an Elo rating algorithm on the window of a Havard dorm.  
 
 ## MP "FaceMash" - filter: M
-![mps_m](./readme_imgs/mps_m)
+![mps_m](./readme_imgs/mps_m.png)
 
 ## MP "FaceMash" - filter: F
-![mps_f](./readme_imgs/mps_f)
+![mps_f](./readme_imgs/mps_f.png)
 
 ## Scoreboard
-![scoreboard](./readme_imgs/scoreboard)
+![scoreboard](./readme_imgs/scoreboard.png)
 
 ## MP Profile
-![profile](./readme_imgs/profile)
+![profile](./readme_imgs/profile.png)
 
 ### Inspiration
 
