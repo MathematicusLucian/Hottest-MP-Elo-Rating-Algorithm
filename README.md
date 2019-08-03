@@ -1,6 +1,6 @@
 # Hottest MP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1. Material, RxJS, PHP API, MySQL DB, Algorithm
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1. Material, RxJS, PHP API, MySQL DB, Algorithm. (Uses my crude MP data API for back-end: obviously wouldn't use such a simple setup for any real-life production: <a  href="https://github.com/k1n4kut4/analytica_api">https://github.com/k1n4kut4/analytica_api</a>.)
 
 I was intrigued by the scene in the movie Social Network in which Eduardo Saverin, then a friend of Facebook founder Mark Zuckerberg, writes an Elo rating algorithm on the window of a Havard dorm.  
 
