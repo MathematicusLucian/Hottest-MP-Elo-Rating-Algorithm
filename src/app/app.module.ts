@@ -8,8 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { MpProfileComponent } from './mp-profile/mp-profile.component';
 import { MpmashComponent } from './mpmash/mpmash.component';
 import { MpmashScoreboardComponent } from './mpmash-scoreboard/mpmash-scoreboard.component';
-import { BrexitPositionScoreboardComponent } from './brexit-position-scoreboard/brexit-position-scoreboard.component';
-import { MpExpensesScoreboardComponent } from './mp-expenses-scoreboard/mp-expenses-scoreboard.component';
 
 import { MatToolbarModule,
   MatButtonModule,
@@ -25,9 +23,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PollComponent } from './poll/poll.component';
-import { PollResultsComponent } from './poll-results/poll-results.component';
-import { D3mapComponent } from './d3map/d3map.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +30,7 @@ import { D3mapComponent } from './d3map/d3map.component';
     HomeComponent,
     MpProfileComponent,
     MpmashComponent,
-    MpmashScoreboardComponent,
-    BrexitPositionScoreboardComponent,
-    MpExpensesScoreboardComponent,
-    PollComponent,
-    PollResultsComponent,
-    D3mapComponent
+    MpmashScoreboardComponent
   ],
   imports: [
     BrowserModule,
