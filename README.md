@@ -1,7 +1,5 @@
 # Hottest MP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1. Material, RxJS, PHP API, MySQL DB, Algorithm. (Uses my crude MP data API for back-end: obviously wouldn't use such a simple setup for any real-life production: <a  href="https://github.com/k1n4kut4/analytica_api">https://github.com/k1n4kut4/analytica_api</a>.)
-
 I was intrigued by the scene in the movie Social Network in which Eduardo Saverin, then a friend of Facebook founder Mark Zuckerberg, writes an Elo rating algorithm on the window of a Havard dorm.  
 
 ## MP "FaceMash" - filter: M
@@ -33,6 +31,10 @@ Eb = 1/(1+10((Ra-Rb)/400))
 For ethical reasons, I didn't want to copy Zuckerberg's choice of subject - he uploaded photos of fellow students. Instead, I have used photos of popular swimwear/lingerie models - the repo BabeMash. <a href="https://github.com/k1n4kut4/facesmash">https://github.com/k1n4kut4/babemash</a> 
   
 Here is my ealier JavaScript code for FaceMash: <a href="https://github.com/k1n4kut4/facesmash">https://github.com/k1n4kut4/facesmash</a>   
+
+# Angular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1. Material, RxJS, PHP API, MySQL DB, Algorithm. (Uses my crude MP data API for back-end: obviously wouldn't use such a simple setup for any real-life production: <a  href="https://github.com/k1n4kut4/analytica_api">https://github.com/k1n4kut4/analytica_api</a>.)
 
 ## Development server
 
